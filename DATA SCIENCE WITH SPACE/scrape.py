@@ -80,17 +80,16 @@ brown_dwarfs_df.to_csv('converted_brown_dwarfs.csv', index=True, index_label="id
 brightest_stars_csv_path = 'brightest_stars.csv'
 
 # Check if the 'brightest_stars.csv' file exists
-if os.path.exists(brightest_stars_csv_path):
+
     # Load the CSV file of brightest stars
-    brightest_stars_df = pd.read_csv(brightest_stars_csv_path)
+brightest_stars_df = pd.read_csv(brightest_stars_csv_path)
 
     # Ensure both DataFrames have consistent column names if necessary
     # For example, if both DataFrames have 'name', 'mass', 'radius', and 'distance' columns
-    merged_df = pd.merge(brightest_stars_df, brown_dwarfs_df, on='name', how='outer')
+merged_df = pd.merge(brightest_stars_df, brown_dwarfs_df, on='name', how='outer')
 
     # Save the merged DataFrame to a new CSV file
-    merged_df.to_csv('merged_stars_data.csv', index=True, index_label="id")
+merged_df.to_csv('merged_stars_data.csv', index=True, index_label="id")
 
-    print("Data scraped, cleaned, converted, and merged successfully.")
-else:
-    print(f"File '{brightest_stars_csv_path}' not found. Please check the path and ensure the file exists.")
+print("Data scraped, cleaned, converted, and merged successfully.")
+
